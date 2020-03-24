@@ -106,12 +106,12 @@ userSchema.methods.generateToken = async function () {
 userSchema.pre('save', async function (next){
     const user =  this
 
-    console.log('antes de salvar aqui')
+    //console.log('antes de salvar aqui')
     if(user.isModified('password')){
-        console.log('antes de salvar aqui 2')
-        console.log(user.password)
+        //console.log('antes de salvar aqui 2')
+        //console.log(user.password)
         user.password = await bycript.hash(user.password, 8)
-        console.log(user.password)
+        //console.log(user.password)
     }
 
     next()
@@ -120,7 +120,7 @@ userSchema.pre('save', async function (next){
 userSchema.pre('remove', async function (next){
     const user =  this
 
-    console.log('antes de eliminar')
+    //console.log('antes de eliminar')
     
     await Task.deleteMany({owner: user._id})
 
@@ -141,6 +141,6 @@ module.exports = User
 
 // me.save()
 // .then(user => {
-//     console.log(user)
+//     //console.log(user)
 // })
-// .catch(error => console.log("Error: ", error))
+// .catch(error => //console.log("Error: ", error))

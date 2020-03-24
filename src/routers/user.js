@@ -29,7 +29,7 @@ const router = new express.Router()
 router.post('/user', async (req, res)=>{
 
     try {
-        console.log(req.body)
+        //console.log(req.body)
         const user = new User(req.body)
         await user.save()
         const token = await user.generateToken();
@@ -53,7 +53,7 @@ router.post('/user/login', async (req, res)=>{
         res.send({user, token})
 
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.status(400).send()        
     }
 
@@ -70,7 +70,7 @@ router.post('/user/logout',authMiddleware, async (req, res) => {
         res.send()
 
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.status(500).send(error)
     }
 })
@@ -85,7 +85,7 @@ router.post('/user/logout/all',authMiddleware, async (req, res) => {
         res.send()
 
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.status(500).send(error)
     }
 })
@@ -172,6 +172,7 @@ router.patch('/user/me', authMiddleware, async (req, res) => {
 
         res.send(req.user);
     } catch (error) {
+        console.log(error)
         res.status(400).send(error)
     }
 })
